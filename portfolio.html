@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+    <body>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        
+
+        .home-section {
+            position: relative;
+            background-image: url('https://img.freepik.com/premium-photo/young-man-working-laptop-computer-having-idea-freelance-job-creativity-innovation-business-idea-concept_776674-950196.jpg?w=740');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(5px);
+            z-index: 1;
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .home-title,
+        .home-description {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .home-title.animated,
+        .home-description.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .icon-tabler {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .icon-tabler:hover {
+            transform: scale(1.2) rotate(15deg);
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: rgba(0, 0, 0, 0); transition: background-color 0.5s;">
+        <div class="container">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+                
+                .navbar-brand {
+            display: flex;
+            
+            align-items: center;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+        }
+                .fixed-top {
+            position: fixed;
+            top: -8px;
+            right: -1px;
+            left: -1px;
+            z-index: 1026;
+        }
+        .icon-tabler {
+            margin-left: 10px;
+        }
+        
+        .custom-font {
+            font-family:monospace; /* Change the font */
+            font-size: 32px;
+            color: #edd2c9; /* Blue color */
+        }
+            </style>
+        </head>
+        <body>
+            <a class="navbar-brand" href="#">
+                <span class="custom-font">Nagarjuna</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M5 21v-2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v2" />
+                </svg>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.8)');
+                } else {
+                    $('.navbar').css('background-color', 'rgba(0, 0, 0, 0)');
+                }
+            });
+    
+            $('.nav-link').hover(
+                function() {
+                    $(this).css({
+                        'color': '#ff5722',
+                        'transform': 'scale(1.1)'
+                    });
+                },
+                function() {
+                    $(this).css({
+                        'color': '#fff',
+                        'transform': 'scale(1)'
+                    });
+                }
+            );
+    
+            $('.navbar-brand svg').hover(
+                function() {
+                    $(this).css({
+                        'transform': 'rotate(360deg)',
+                        'transition': 'transform 1s ease-in-out'
+                    });
+                },
+                function() {
+                    $(this).css({
+                        'transform': 'rotate(0deg)',
+                        'transition': 'transform 1s ease-in-out'
+                    });
+                }
+            );
+        });
+    </script>
+    
+    
+
+    <section id="home" class="home-section">
+        <div class="overlay"></div>
+        <div class="container home-content">
+            <h2 class="home-title">Hey, it's me NAGARJUNA</h2>
+            <p class="home-description">
+                I'm passionate about creating stunning websites and digital experiences. With expertise in HTML, CSS, JavaScript, and more, I bring creativity and innovation to every project.
+            </p>
+            <p class="home-description">
+                Let's turn your ideas into reality!
+            </p>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function checkPosition() {
+                $('.home-title, .home-description').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var viewportBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if (elementTop < viewportBottom) {
+                        $(this).addClass('animated');
+                    }
+                });
+            }
+            
+            $(window).on('scroll resize', checkPosition);
+            checkPosition(); // Initial check on document ready
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Smooth scrolling for navigation links
+            $('a.nav-link').click(function() {
+                var target = $(this.hash);
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 900);
+                    return false;
+                }
+            });
+    
+            // Other scripts...
+        });
+    </script>
+    
+</body>
+    <section id="about" class="py-5" style="border-radius: 12px; box-shadow: #721c24 0px 0px 20px;">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="about-content">
+                        <h3 class="about-heading">Meet Nagarjuna</h3>
+                        <p class="about-text">Hi there! I'm Nagarjuna, a passionate website Developer based in Andhra Pradesh, Kurnool District. With a background in Mechanical Engineering and a knack for IT, I ventured into the world of coding and never looked back.</p>
+                        <p class="about-text">My journey has led me to master various programming languages including HTML, SQL, CSS, JavaScript, and Apex. Beyond coding, I also excel in the realms of dropshipping and editing, making me a versatile asset in any project.</p>
+                        <p class="about-text">I believe in continuous learning and strive to deliver innovative solutions that exceed expectations. Let's connect and explore opportunities together!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5 bg-light text-center" style="background-color: #87CEEB; border-radius: 12px; box-shadow: #721c24 0px 0px 20px; margin-top: -1rem;">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <p>Below are the services that we will offer.</p>
+            <div class="row">
+                <div class="col-md-4 skill-item" style="margin-bottom: 2rem; border-radius: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-html" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 4h18l-9 16-9 -16z" />
+                        <path d="M6 12h6m-3 -3h3m-3 6h3" />
+                    </svg>
+                    <h4 style="margin-bottom: 1rem;">HTML</h4>
+                    <p>Proficient in creating well-structured HTML documents.</p>
+                </div>
+                <div class="col-md-4 skill-item" style="margin-bottom: 2rem; border-radius: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-css3" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 5l1 14l7 2l7 -2l1 -14" />
+                        <path d="M4 5l7 2l7 -2" />
+                    </svg>
+                    <h4 style="margin-bottom: 1rem;">CSS</h4>
+                    <p>Skilled in styling web pages using CSS for enhanced visual appeal.</p>
+                </div>
+                <div class="col-md-4 skill-item" style="margin-bottom: 2rem; border-radius: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-javascript" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                        <path d="M14 11v4a1 1 0 0 1 -1 1h-4" />
+                        <path d="M10 14v4a1 1 0 0 1 -1 1H5" />
+                        <path d="M10 3v4a1 1 0 0 1 -1 1H5" />
+                        <path d="M7 7l-1 3h4l-1 3" />
+                        <path d="M17 7l1 3h-4l1 3" />
+                    </svg>
+                    <h4 style="margin-bottom: 1rem;">JavaScript</h4>
+                    <p>Proficient in client-side scripting using JavaScript for dynamic web content.</p>
+                </div>
+                <div class="col-md-4 skill-item" style="margin-bottom: 2rem; border-radius: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <ellipse cx="12" cy="6" rx="8" ry="3" />
+                        <path d="M4 6v6c0 1.657 3.582 3 8 3s8 -1.343 8 -3V6" />
+                        <path d="M4 12v6c0 1.657 3.582 3 8 3s8 -1.343 8 -3v-6" />
+                    </svg>
+                    <h4 style="margin-bottom: 1rem;">SQL</h4>
+                    <p>Experienced in writing and optimizing SQL queries for databases. Proficient in relational database management systems.</p>
+                </div>
+                <div class="col-md-4 skill-item" style="margin-bottom: 2rem; border-radius: 12px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <polyline points="7 8 3 12 7 16" />
+                        <polyline points="17 8 21 12 17 16" />
+                        <line x1="14" y1="4" x2="10" y2="20" />
+                    </svg>
+                    <h4 style="margin-bottom: 1rem;">Salesforce Apex</h4>
+                    <p>Skilled in developing custom applications on Salesforce using Apex. Proficient in Salesforce development and customization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.skill-item').hover(
+            function() {
+                $(this).css({
+                    'box-shadow': '0 0 20px rgba(135, 206, 235, 0.8)',
+                    'transition': 'box-shadow 0.5s ease-in-out'
+                });
+            },
+            function() {
+                $(this).css({
+                    'box-shadow': 'none',
+                    'transition': 'box-shadow 0.5s ease-in-out'
+                });
+            }
+        );
+    });
+</script>
+    
+    <section id="services" class="py-5 text-center">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <p>Below are the services that you will get.</p>
+            <div class="services-list row">
+                <div class="col-md-4">
+                    <div class="service-item card">
+                        <div class="card-body">
+                            <h4 class="card-title">Live Website Development</h4>
+                            <ul class="card-text">
+                                <li>Design and develop fully functional websites.</li>
+                                <li>Optimize for performance, responsiveness, and SEO.</li>
+                                <li>Deploy websites to live servers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item card">
+                        <div class="card-body">
+                            <h4 class="card-title">Digital Marketing</h4>
+                            <ul class="card-text">
+                                <li>Expertise in creating and managing advertising campaigns on Facebook and Instagram.</li>
+                                <li>Proven track record of increasing engagement and conversions through targeted ads.</li>
+                                <li>Skilled in dropshipping and online sales strategies.</li>
+                                <li>Proficiency in handling Salesforce projects and automating business processes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item card">
+                        <div class="card-body">
+                            <h4 class="card-title">Content Editing</h4>
+                            <ul class="card-text">
+                                <li>Professional video editing services.</li>
+                                <li>Editing and proofreading written content.</li>
+                                <li>Enhancing multimedia content for websites and social media.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+    <section id="contact" class="py-5" style="border-radius: 12px; box-shadow: #721c24 0px 0px 11px;">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <form id="contactForm" action="submit_form.php" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer class="text-center py-4" style="background-color: #333; color: #fff; margin-left: -7.5rem; margin-right: -7.5rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-left text-center">
+                    <p>&copy; 2024 Nagarjuna. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-right text-center">
+                    <p style="margin-bottom: 5px;">Connect with me:</p>
+                    <a href="https://www.facebook.com/ricky.nag.1" style="text-decoration: none; color: #3b5998; margin-right: 20px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
+                            <path d="M18 2h-4a4 4 0 0 0-4 4v4H8v4h2v6h4v-6h3l1-4h-4v-2a2 2 0 0 1 2-2h2V6a2 2 0 0 0-2-2z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/bittu___nag_jangam" style="text-decoration: none; color: #e4405f; margin-right: 20px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"></path>
+                        </svg>
+                    </a>
+                    <a href="mailto:smartnag55@mail.com" style="text-decoration: none; color: #fff;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail">
+                            <path d="M22 12h-20"></path>
+                            <path d="M2.757 6.343l9.243 6.88a1 1 0 0 0 1.14 0l9.243-6.88"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html>
