@@ -5,235 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="portfolio.css">
 </head>
-    <body>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }  
-        .home-section {
-            position: relative;
-            background-image: url('https://img.freepik.com/premium-photo/young-man-working-laptop-computer-having-idea-freelance-job-creativity-innovation-business-idea-concept_776674-950196.jpg?w=740');
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(5px);
-            z-index: 1;
-        }
+<body>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: cursive;
+    }  
+    .home-section {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+    }
+    #bg-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+    }
+    .content {
+        z-index: 1;
+    }
+    .home-title {
+        font-family: 'Your Font', sans-serif;
+    }
+    .highlighted-name {
+        color: #ff6347;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        filter: blur(5px);
+        z-index: 1;
+    }
+    .home-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+    .home-title, .home-description {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    .home-title.animated, .home-description.animated {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .nav-link {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #fff;
+        transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    .icon-tabler {
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .icon-tabler:hover {
+        transform: scale(1.2) rotate(15deg);
+        color: #ff5722;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 24px;
+        color: #333;
+        text-decoration: none;
+    }
+    .custom-font {
+        font-family: monospace;
+        font-size: 32px;
+        color: #edd2c9;
+    }
+</style>
 
-        .home-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .home-title,
-        .home-description {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-
-        .home-title.animated,
-        .home-description.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .nav-link {
-            position: relative;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #fff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .icon-tabler {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .icon-tabler:hover {
-            transform: scale(1.2) rotate(15deg);
-            color: #ff5722;
-        }
-    </style>
-
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: rgba(0, 0, 0, 0); transition: background-color 0.5s;">
-        <div class="container">
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-                
-                .navbar-brand {
-            display: flex;
-            
-            align-items: center;
-            font-family:Georgia, 'Times New Roman', Times, serif;
-            font-size: 24px;
-            color: #333;
-            text-decoration: none;
-        }
-                .fixed-top {
-            position: fixed;
-            top: -8px;
-            right: -1px;
-            left: -1px;
-            z-index: 1026;
-        }
-        .icon-tabler {
-            margin-left: 10px;
-        }
-        
-        .custom-font {
-            font-family:monospace; /* Change the font */
-            font-size: 32px;
-            color: #edd2c9; /* Blue color */
-        }
-            </style>
-        </head>
-        <body>
-            <a class="navbar-brand" href="#">
-                <span class="custom-font">Nagarjuna</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <circle cx="12" cy="7" r="4" />
-                    <path d="M5 21v-2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v2" />
-                </svg>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: rgba(0, 0, 0, 0); transition: background-color 0.5s;">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span class="custom-font">Nagarjuna</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="12" cy="7" r="4" />
+                <path d="M5 21v-2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v2" />
+            </svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </nav>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 50) {
-                    $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.8)');
-                } else {
-                    $('.navbar').css('background-color', 'rgba(0, 0, 0, 0)');
-                }
-            });
-    
-            $('.nav-link').hover(
-                function() {
-                    $(this).css({
-                        'color': '#ff5722',
-                        'transform': 'scale(1.1)'
-                    });
-                },
-                function() {
-                    $(this).css({
-                        'color': '#fff',
-                        'transform': 'scale(1)'
-                    });
-                }
-            );
-    
-            $('.navbar-brand svg').hover(
-                function() {
-                    $(this).css({
-                        'transform': 'rotate(360deg)',
-                        'transition': 'transform 1s ease-in-out'
-                    });
-                },
-                function() {
-                    $(this).css({
-                        'transform': 'rotate(0deg)',
-                        'transition': 'transform 1s ease-in-out'
-                    });
-                }
-            );
-        });
-    </script>
-    
-    <section id="home" class="home-section">
-        <div class="overlay"></div>
+    </div>
+</nav>
+
+<section id="home" class="home-section">
+
+    <video autoplay muted loop id="bg-video">
+        <source src="https://cdn.pixabay.com/video/2015/08/08/78-135733055_medium.mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="container home-content">
         <div class="container home-content">
-            <h2 class="home-title">Hey, it's me  <span style="font-style: italic; color: #59d1d1">NAGARJUNA</span></h2>
-            <p class="home-description">
-                I'm passionate about creating stunning websites and digital experiences. With expertise in HTML, CSS, JavaScript, and more, I bring creativity and innovation to every project.
-            </p>
-            <p class="home-description">
-                Let's turn your ideas into reality!
-            </p>
-        </div>
-    </section>
+            <h2 class="home-title">
+                Hey, it's me 
+                <span style="font-style: italic; color: #59d1d1;     font-style: italic;
+                color: #bf8a78;
+                FONT-KERNING: none;
+                FONT-FAMILY: auto;
+                FONT-VARIANT: DISCRETIONARY-LIGATURES;">
+                    NAGARJUNA
+                </span>
+            </h2>
+        
+        
+        <p class="home-description" style="margin: 0; font-style: italic;">
+            I'm passionate about creating stunning websites and digital experiences. With expertise in HTML, CSS, JavaScript, and more, I bring creativity and innovation to every project.
+            <br></BR>
+        </p>
+        <p class="home-description" style="margin: 0;">
+            Let's turn your ideas into reality!
+        </p>
+    </div>
+    
+</section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            function checkPosition() {
-                $('.home-title, .home-description').each(function() {
-                    var elementTop = $(this).offset().top;
-                    var viewportBottom = $(window).scrollTop() + $(window).height();
-                    
-                    if (elementTop < viewportBottom) {
-                        $(this).addClass('animated');
-                    }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('.navbar').css('background-color', 'rgba(0, 0, 0, 0.8)');
+            } else {
+                $('.navbar').css('background-color', 'rgba(0, 0, 0, 0)');
+            }
+        });
+
+        $('.nav-link').hover(
+            function() {
+                $(this).css({
+                    'color': '#ff5722',
+                    'transform': 'scale(1.1)'
+                });
+            },
+            function() {
+                $(this).css({
+                    'color': '#fff',
+                    'transform': 'scale(1)'
                 });
             }
-            
-            $(window).on('scroll resize', checkPosition);
-            checkPosition(); // Initial check on document ready
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Smooth scrolling for navigation links
-            $('a.nav-link').click(function() {
-                var target = $(this.hash);
-                if (target.length) {
-                    $('html, body').animate({
-                        scrollTop: target.offset().top
-                    }, 900);
-                    return false;
+        );
+
+        $('.navbar-brand svg').hover(
+            function() {
+                $(this).css({
+                    'transform': 'rotate(360deg)',
+                    'transition': 'transform 1s ease-in-out'
+                });
+            },
+            function() {
+                $(this).css({
+                    'transform': 'rotate(0deg)',
+                    'transition': 'transform 1s ease-in-out'
+                });
+            }
+        );
+
+        function checkPosition() {
+            $('.home-title, .home-description').each(function() {
+                var elementTop = $(this).offset().top;
+                var viewportBottom = $(window).scrollTop() + $(window).height();
+                
+                if (elementTop < viewportBottom) {
+                    $(this).addClass('animated');
                 }
             });
+        }
+        
+        $(window).on('scroll resize', checkPosition);
+        checkPosition(); // Initial check on document ready
+
+        // Smooth scrolling for navigation links
+        $('a.nav-link').click(function() {
+            var target = $(this.hash);
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 900);
+                return false;
+            }
         });
-    </script>
+    });
+</script>
     
 </body>
     <section id="about" class="py-5" style="border-radius: 12px; box-shadow: #721c24 0px 0px 20px;">
@@ -245,7 +248,7 @@
                 <div class="col-md-6">
                     <div class="about-content">
                         <h3 class="about-heading">Meet Nagarjuna</h3>
-                        <p class="about-text">Hi there! I'm Nagarjuna, a passionate website Developer based in Andhra Pradesh, Kurnool District. With a background in Mechanical Engineering and a knack for IT, I ventured into the world of coding and never looked back.</p>
+                        <p class="about-text">Hi there!</span> I'm a passionate website Developer based in Andhra Pradesh, Kurnool District. With a background in Mechanical Engineering and a knack for IT, I ventured into the world of coding and never looked back.</p>
                         <p class="about-text">My journey has led me to master various programming languages including HTML, SQL, CSS, JavaScript, and Apex. Beyond coding, I also excel in the realms of dropshipping and editing, making me a versatile asset in any project.</p>
                         <p class="about-text">I believe in continuous learning and strive to deliver innovative solutions that exceed expectations. Let's connect and explore opportunities together!</p>
                     </div>
