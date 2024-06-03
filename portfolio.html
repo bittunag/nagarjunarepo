@@ -136,6 +136,55 @@
         </div>
     </div>
 </nav>
+<button id="back-to-top" style="display: none;">↑</button>
+<style>
+    /* Styles for the back-to-top button */
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #59d1d1;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        font-size: 18px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s;
+    }
+
+    /* Animation for the button */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Smooth scroll behavior for the page */
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+<script>
+    // Show or hide the button when scrolling
+    window.onscroll = function() {
+        const button = document.getElementById('back-to-top');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            button.style.display = 'flex';
+        } else {
+            button.style.display = 'none';
+        }
+    };
+
+    // Scroll to the top of the document when the button is clicked
+    document.getElementById('back-to-top').onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
 
 <section id="home" class="home-section">
 
